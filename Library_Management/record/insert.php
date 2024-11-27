@@ -10,21 +10,22 @@ header("Content-Type:application/json");
 
 if($name!=null&& $cate != null&& $author != null&& $price!=null){
 
-       $sql = "INSERT INTO books (`name`,`book_category`,`author`,`price`) VALUES ('$name','$cate','$author','$price')";
+       $sql = "INSERT INTO books (`name`,`category`,`author`,`price`) VALUES ('$name','$cate','$author','$price')";
        $res = mysqli_query($conn,$sql);
 
        if($res){
-        echo "Insert success";
+        $msg=array("msg"=>"success");
+        echo json_encode($msg,JSON_PRETTY_PRINT);
         http_response_code(200);
        }
        else{  
-       
-        echo "Insert faled";
+        $msg=array("msg"=>"FAILED");
+        echo json_encode($msg,JSON_PRETTY_PRINT);
         http_response_code(400); 
        }
 }else{
-    
-        echo "no data found";
+    $msg=array("msg"=>"FAILED");
+        echo json_encode($msg,JSON_PRETTY_PRINT);
         http_response_code(404); 
 }
 ?>

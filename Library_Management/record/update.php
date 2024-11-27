@@ -5,20 +5,21 @@
 
     @$id = $_POST['id'];
     @$name=$_POST['name'];
-    @$email=$_POST['email'];
-    @$psw=$_POST['password'];
+    @$cate=$_POST['category'];
+    @$author=$_POST['author'];
+    @$price=$_POST['price'];
    
-    
-    if($name !=null && $email!=null && $psw!=null){
-        $sql = "UPDATE user SET `name`='$name',`email`='$email',`password`='$psw' WHERE `id` = '$id' ";
+
+    if($name !=null && $cate!=null && $author!=null && $price!=null && $id!=null){
+        $sql = "UPDATE books SET `name`='$name',`category`='$cate',`author` ='$author',`price`='$price' WHERE `id` = '$id' ";
         $res = mysqli_query($conn,$sql);  
         if($res){
-            echo "update success";
+            echo "Insert success";
             http_response_code(200);
            }
            else{  
            
-            echo "update faled";
+            echo "Insert faled"
             http_response_code(400); 
            }
     }else{

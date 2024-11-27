@@ -2,9 +2,9 @@
         include("../connection.php");
         header("Content-Type:application/json");
 
-        $sql = "SELECT * FROM user";
-        $res = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM author";
 
+        $res = mysqli_query($conn,$sql);
         if ($res) {
             echo "success";
             $arr = array();
@@ -18,4 +18,5 @@
             echo "failed";
         }
         echo json_encode($arr);
+        
     ?>

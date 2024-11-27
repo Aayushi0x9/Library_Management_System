@@ -4,19 +4,19 @@
     header("Content-Type:application/json");
 
     @$id = $_POST['id'];
-
-    if($id!=null){
-
-        $sql = "DELETE FROM `user` WHERE `id` = '$id'";
-        $res = mysqli_query($conn, $sql); 
-
+    @$name=$_POST['name'];
+   
+    
+    if($name !=null  && $id!=null){
+        $sql = "UPDATE author SET `name`='$name' WHERE `id` = '$id' ";
+        $res = mysqli_query($conn,$sql);  
         if($res){
-            echo "delete success";
+            echo "update success";
             http_response_code(200);
            }
            else{  
            
-            echo "delete faled";
+            echo "update faled";
             http_response_code(400); 
            }
     }else{
